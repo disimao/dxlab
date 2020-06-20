@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "0gn4jd"
+      MYSQL_DATABASE: "django"
+      MYSQL_USER: "django"
+      MYSQL_PASSWORD: "django"
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - mysql-compose-network
+
+  django:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    command: /bin/bash -c "./docker/wait-for-it.sh db:3306 && python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - "../:/src"
+    networks:
+      - mysql-compose-network
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - mysql-compose-network
+
+networks: 
+  mysql-compose-network:
+    driver: bridge
