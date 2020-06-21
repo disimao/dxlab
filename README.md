@@ -1,5 +1,5 @@
 # dxlab
-dxlab challange
+dxlab challenge
 
 
 ## Dependencies
