@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'dxlab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASE_URL = "mysql://django:0gn4jd@db:3306/django"
+DATABASE_URL = "mysql://django:0gn4jd@localhost:3306/django"
 DATABASES = {}
 
 db_from_env = dj_database_url.config(default=DATABASE_URL)
