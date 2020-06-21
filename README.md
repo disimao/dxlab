@@ -47,6 +47,10 @@ It will need some extras. See requirements/docker.txt
 
 	$ . ./bin/start-docker-development-server.sh
 
+## Travis
+
+[CI](https://travis-ci.org/github/disimao/dxlab/)
+
 ## Heroku
 
-[Publish at Heroku](https://pure-reef-43194.herokuapp.com/)
+[CD](https://pure-reef-43194.herokuapp.com/)

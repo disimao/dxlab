@@ -104,7 +104,7 @@ class BillingInformation(models.Model):
     billing_address = models.ForeignKey(Address, on_delete=models.PROTECT, blank=False, null=False,
                                         verbose_name=_('Billing Address'))
     business_name = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Business name'))
-    identification_number = models.IntegerField(blank=False, null=False, verbose_name=_('Identification Number'))
+    identification_number = models.CharField(max_length=55, blank=False, null=False, verbose_name=_('Identification Number'))
 
     def __str__(self):
         return '{} - {}'.format(self.billing_address, self.identification_number)
