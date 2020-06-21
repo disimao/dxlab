@@ -7,7 +7,7 @@ services:
       MYSQL_ROOT_PASSWORD: "0gn4jd"
       MYSQL_DATABASE: "django"
       MYSQL_USER: "django"
-      MYSQL_PASSWORD: "django"
+      MYSQL_PASSWORD: "0gn4jd"
     ports:
       - "3308:3306"
     volumes:

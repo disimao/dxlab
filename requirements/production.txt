@@ -1,2 +1,5 @@
 Django
 djangorestframework
+uritemplate
+dj_database_url
+mysqlclient

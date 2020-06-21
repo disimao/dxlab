@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel, StatusModel):
 
     first_name = models.CharField(max_length=40, blank=True, verbose_name=_('First name'))
     last_name = models.CharField(max_length=40, blank=True, verbose_name=_('Last name'))
-    is_staff = models.BooleanField(default=True, verbose_name=_('Active'))
+    is_staff = models.BooleanField(default=False, verbose_name=_('Active'))
     email = models.EmailField(unique=True, verbose_name=_('E-mail Address'))
     mobile_phone_number = models.IntegerField(blank=True, null=True, verbose_name=_('Mobile phone number'))
     contact_phone_number = models.IntegerField(blank=False, null=False, verbose_name=_('Contact phone number'))
@@ -124,7 +124,7 @@ class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT, blank=False, null=False, verbose_name=_('User'))
     billing_information = models.ForeignKey(BillingInformation, on_delete=models.PROTECT, blank=False, null=False,
                                             verbose_name=_('Billing Address'))
-    shipping_address = models.ManyToManyField(Address, blank=False, verbose_name=_('Shipping Address\''))
+    shipping_address = models.ManyToManyField(Address, blank=True, verbose_name=_('Shipping Address\''))
 
     def __str__(self):
         return '{name}'.format(name=self.user.email)
