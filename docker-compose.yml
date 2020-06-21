@@ -17,7 +17,7 @@ services:
 
   django:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     command: /bin/bash -c "./wait-for-it.sh db:3306 && python3 manage.py runserver 0.0.0.0:8000"
     ports:
