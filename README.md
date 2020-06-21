@@ -49,4 +49,4 @@ It will need some extras. See requirements/docker.txt
 
 ## Heroku
 
-	https://pure-reef-43194.herokuapp.com/
+[Publish at Heroku](https://pure-reef-43194.herokuapp.com/)
