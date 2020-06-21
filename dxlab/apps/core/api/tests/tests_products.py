@@ -5,13 +5,14 @@ from rest_framework.reverse import reverse_lazy
 
 from rest_framework.test import APITestCase
 
-from ..models import *
+from ...models import Product
 
 
 class BaseTestCase(APITestCase):
 
     def setUp(self):
-        self.url = '/api/post/'
+        self.assertTrue(self.client.login(username='diogosimao@gmail.com', password='lembrar'))
+        self.url = reverse_lazy("product-list")
         self.good_data = {"name": "Plano Trimestral", "slug": "plano-trimestral", "description": "Plano Classe I"}
         product = Product.objects.create(**self.good_data)
         self.good_url = reverse_lazy("product-detail", kwargs={'pk': product.id})

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,8 @@ SECRET_KEY = 'psc1^e862zb*v7tkp%4$ra2=0739zy^(*s@vm%^8uyjax-u7^#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# For production environment it needs to change 
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +42,7 @@ INSTALLED_APPS = [
     'dxlab.apps.core',
 
     'rest_framework',
-    'drf_generators',
+    # 'drf_generators', -- For development purpose
 
 ]
 
@@ -56,10 +58,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'dxlab.urls'
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'templates').replace('\\', '/'),
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': TEMPLATE_DIRS,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,12 +86,11 @@ WSGI_APPLICATION = 'dxlab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASE_URL = "mysql://django:0gn4jd@db:3306/django"
+DATABASES = {}
+
+db_from_env = dj_database_url.config(default=DATABASE_URL)
+DATABASES['default'] = db_from_env
 
 
 # Password validation
@@ -129,7 +136,14 @@ AUTH_USER_MODEL = 'core.User'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 15,
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication'
+    ],
 }
+
+LOGIN_REDIRECT_URL = '/core/api/docs/swagger-ui/'
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))

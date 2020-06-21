@@ -16,7 +16,12 @@ class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         depth = 2
-        fields = '__all__'
+        fields = ['first_name',
+                  'last_name',
+                  'email',
+                  'contact_phone_number',
+                  'mobile_phone_number'
+                  ]
 
 
 class AddressSerializer(ModelSerializer):

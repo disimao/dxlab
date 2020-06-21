@@ -1,0 +1,154 @@
+[
+{
+    "model": "core.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$iRPZTwMlcP2N$qzWZ1rvYHnvprSzG6Fi3lOyiJRCywQi2nV2PNeo7m7k=",
+        "last_login": "2020-06-20T22:23:30.781Z",
+        "is_superuser": true,
+        "created_at": "2020-06-20T22:23:06.339Z",
+        "updated_at": "2020-06-21T00:06:15.064Z",
+        "is_active": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "email": "diogosimao@gmail.com",
+        "mobile_phone_number": null,
+        "contact_phone_number": 40041001,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$OfNPVzBihLsp$V7t8RepHh1Opq3gLkjZnEJTn3irnvIzvx8yq2dRmSac=",
+        "last_login": null,
+        "is_superuser": false,
+        "created_at": "2020-06-21T00:09:04.793Z",
+        "updated_at": "2020-06-21T00:26:51.200Z",
+        "is_active": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "email": "kakukinha@gmail.com",
+        "mobile_phone_number": null,
+        "contact_phone_number": 999191991,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.address",
+    "pk": 1,
+    "fields": {
+        "street_name": "Rua A",
+        "number": 122,
+        "additional_information": "Casa 1",
+        "postal_code": 27331320,
+        "state": "Rio de Janeiro",
+        "city": "Barra Mansa",
+        "country": "Brasil"
+    }
+},
+{
+    "model": "core.address",
+    "pk": 2,
+    "fields": {
+        "street_name": "R Basilio",
+        "number": 209,
+        "additional_information": "121 C",
+        "postal_code": 5540010,
+        "state": "S\u00e3o Paulo",
+        "city": "S\u00e3o Paulo",
+        "country": "Brasil"
+    }
+},
+{
+    "model": "core.billinginformation",
+    "pk": 1,
+    "fields": {
+        "billing_address": 2,
+        "business_name": null,
+        "identification_number": 11505736781
+    }
+},
+{
+    "model": "core.store",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "products": [
+            2,
+            1
+        ]
+    }
+},
+{
+    "model": "core.customer",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "billing_information": 1,
+        "shipping_address": [
+            2
+        ]
+    }
+},
+{
+    "model": "core.product",
+    "pk": 1,
+    "fields": {
+        "created_at": "2020-06-21T00:47:37.993Z",
+        "updated_at": "2020-06-21T00:47:37.993Z",
+        "is_active": true,
+        "slug": "plano-anual",
+        "name": "Plano Anual",
+        "description": "Novo plano anual"
+    }
+},
+{
+    "model": "core.product",
+    "pk": 2,
+    "fields": {
+        "created_at": "2020-06-21T00:51:45.011Z",
+        "updated_at": "2020-06-21T00:51:45.011Z",
+        "is_active": true,
+        "slug": "plano-avulso",
+        "name": "Plano Avulso",
+        "description": "Novo plano avulso"
+    }
+},
+{
+    "model": "core.orderitem",
+    "pk": 1,
+    "fields": {
+        "created_at": "2020-06-21T00:49:03.204Z",
+        "updated_at": "2020-06-21T00:49:03.204Z",
+        "order": 1,
+        "product": 1,
+        "quantity": 11
+    }
+},
+{
+    "model": "core.orderitem",
+    "pk": 2,
+    "fields": {
+        "created_at": "2020-06-21T00:51:52.492Z",
+        "updated_at": "2020-06-21T00:51:52.492Z",
+        "order": 1,
+        "product": 2,
+        "quantity": 32
+    }
+},
+{
+    "model": "core.order",
+    "pk": 1,
+    "fields": {
+        "created_at": "2020-06-21T00:48:15.968Z",
+        "updated_at": "2020-06-21T00:48:15.968Z",
+        "customer": 1
+    }
+}
+]
