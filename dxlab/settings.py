@@ -86,12 +86,9 @@ WSGI_APPLICATION = 'dxlab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASE_URL = "mysql://django:0gn4jd@db:3306/django"
-DATABASES = {}
+DATABASE_URL = "mysql://django:0gn4jd@localhost:3306/django"
 
-db_from_env = dj_database_url.config(default=DATABASE_URL)
-DATABASES['default'] = db_from_env
-
+DATABASES = {"default": dj_database_url.config(default=DATABASE_URL)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -136,14 +133,9 @@ AUTH_USER_MODEL = 'core.User'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 15,
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication'
+        'rest_framework.authentication.BasicAuthentication',
     ],
 }
 
 LOGIN_REDIRECT_URL = '/core/api/docs/swagger-ui/'
-
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))

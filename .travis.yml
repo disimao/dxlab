@@ -1,0 +1,25 @@
+# config for (Django + Postgres) -> Docker -> Travis -> Heroku
+
+language: python
+python:
+    - 3.8
+services:
+    - docker
+    - mysql
+
+install:
+    - pip install -r requirements.txt
+before_script:
+    - mysql -u root --password="" < travis.sql
+script:
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py loaddata dxlab/apps/core/fixtures/fixtures.json
+    - python manage.py test
+
+deploy:
+    provider: script
+    script: bash docker_push.sh
+    skip_cleanup: true
+    on:
+        branch: master
