@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'dxlab.wsgi.application'
 
 DATABASE_URL = "mysql://django:0gn4jd@db:3306/django"
 
-DATABASES = {"default": dj_database_url.config(DATABASE_URL)}
+DATABASES = {"default": dj_database_url.config(default=DATABASE_URL)}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
