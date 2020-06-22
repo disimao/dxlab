@@ -31,12 +31,12 @@ Default store user credentials:
 * username: diogosimao@gmail.com
 * password: lembrar
 
-[Login](http://127.0.0.1:8000/core/api/auth/login/)
+[Local login](http://127.0.0.1:8000/core/api/auth/login/) or https://pure-reef-43194.herokuapp.com/api/auth/
 
 ## API Doc
 
 OpenAPI Documentation:
-* http://127.0.0.1:8000/core/api/docs/swagger-ui/
+* [Local API Doc](http://127.0.0.1:8000/core/api/docs/swagger-ui/) or https://pure-reef-43194.herokuapp.com/api/docs/swagger-ui/
 
 
 ## Docker
