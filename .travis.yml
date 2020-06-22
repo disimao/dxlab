@@ -1,4 +1,4 @@
-# config for (Django + Postgres) -> Docker -> Travis -> Heroku
+# config for (Django + MySQL) -> Docker -> Travis -> Heroku
 
 language: python
 python:
