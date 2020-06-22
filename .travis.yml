@@ -15,11 +15,11 @@ script:
     - python manage.py makemigrations
     - python manage.py migrate
     - python manage.py loaddata dxlab/apps/core/fixtures/fixtures.json
-    - python manage.py test
-
+    - python manage.py test --force-color -v 3 --debug-mode --traceback
 deploy:
-    provider: script
-    script: bash docker_push.sh
-    skip_cleanup: true
-    on:
-        branch: master
+  provider: heroku
+  api_key:
+    secure: "smhWPmJt+J7FiViHMjUrk+RFGuWOdKMhlLc3qsMetKREOyquEFH2KoTR1ya0hxqEVB+FNG2StVeqNL7McirvRj9Welj9ktrhq7Ltu24g+Jfua8/RSnCu2Qv5eP509DvqYvseIZNl/TapgV4DdwIk26cab19vhQI2MXilqyOzEvgPYKKGvosTXAhRTlMPlZrmpOUZEsqi/K2eRrabIQGoTTcPF53xlZMm5UP024ir7gjr4RQIu73E6Y1UdG5tq4Xp5rekYY++q9gRtGoskI1XphRwhSmaI7pbxHUfmB8j9g3cuzZnGEk/eeoKUuOV1f0+0QP3sdqayNtR1T91qEXC/OGZPKgM5DO1GA6xEPHkPg0t15rhDKOHY6nTKqN3fcAT70oARvl/1a5SGGjz8qGIFZn30Me5dsdbncHp4uZA5uydYyy6tRlKH+hDgjemlyEZ4keiHSLL5eGJd6GPpcjhCQBevzaUNH3YQFTrHydh3y4B+PgmeCt3KZcO2km/r98w8+NnRvRYdZvgn6NguygmMEX0wT+cm+RpzXnb/T/xhfXMMRXVM8W4pP0zLxop8TePfgsfjc6YHId3okD05KZRIu88SjqPZtYgNpumKT4znzGvO4x6XYwYESggl8pZ2+Td4e2Lzwz2qHNKYuC5JQUiEif9JmjzOB/J0oTJBC1g15g="
+  app: pure-reef-43194
+  on:
+    repo: disimao/dxlab
