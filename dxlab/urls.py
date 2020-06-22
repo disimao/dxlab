@@ -18,8 +18,13 @@ from django.urls import (
     path,
     include,
 )
+from django.http import (
+    HttpResponse,
+)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('dxlab.apps.core.urls')),
+    path('', lambda request: HttpResponse("ok", content_type="text/plain"))
 ]
